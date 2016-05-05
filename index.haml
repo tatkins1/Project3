@@ -1,0 +1,33 @@
+%html
+  %head
+    %title {Title}
+    %link{rel: "stylesheet", href: ""}
+  %body
+    %header#header
+      %h1
+        %a{href: "{BlogURL}"} {Title}
+      %p {Description} Read this site via
+        %a{href: "{RSS}"} RSS
+      .main
+        {block:Posts}
+        {block:Text}
+        %article.text
+          %header
+            %h2
+              {block:IndexPage}
+              %a{href: "{Permalink}"} {Title}
+              {/block:IndexPage}
+              {block:PermalinkPage}
+              {Title}
+              {/block:PermalinkPage}
+          .content {Body}
+          %footer
+            %p Posted at {12Hour}:{Minutes}{AmPm} {Month} {DayOfMonth}, {Year}
+        {/block:Text}
+        {block:Photo}
+        %article.photo
+          %figure{aria-labelledby: "photo{PostID}"}
+            %img{src: "{PhotoURL-HighRes}", alt: "{PhotoAlt}"}
+            %figcaption{id: "photo{PostID}"} {Caption}
+        {/block:Photo}
+        {/block:Posts}
