@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <title>{Title}</title>
+    <link rel='stylesheet' href='tatkins1.github.io/css/tahjatkinson.css' />
+    <link rel='shortcut icon" href:"{favicon}' />
+    <div></div>
+  </head>
+  <body>
+    <header id='header'>
+      <h1>
+        <a href='{BlogURL}'>{Title}</a>
+      </h1>
+      <p>{Description} Read this site via 
+        <a href='{RSS}'>RSS</a>
+      </p>
+      <div class='main'>
+        {block:Posts}
+        {block:Text}
+        <article class='text'>
+          <header>
+            <h2>
+              {block:IndexPage}
+              <a href='{Permalink}'>{Title}</a>
+              {/block:IndexPage}
+              {block:PermalinkPage}
+              {Title}
+              {/block:PermalinkPage}
+            </h2>
+          </header>
+          <div class='content'>{Body}</div>
+          <footer>
+            <p>Posted at {12Hour}:{Minutes}{AmPm} {Month} {DayOfMonth}, {Year}</p>
+          </footer>
+        </article>
+        {/block:Text}
+        {block:Photo}
+        <article class='photo'>
+          <figure aria-labelledby='photo{PostID}'>
+            <img src='{PhotoURL-HighRes}' alt='{PhotoAlt}' />
+            <figcaption id='photo{PostID}'>{Caption}</figcaption>
+          </figure>
+        </article>
+        {/block:Photo}
+        {/block:Posts}
+      </div>
+    </header>
+  </body>
+</html>

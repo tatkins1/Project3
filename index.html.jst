@@ -1,0 +1,15 @@
+(function() {
+  if (window.HAML == null) {
+    window.HAML = {};
+  }
+
+  window.HAML['index'] = function(context) {
+    return (function() {
+      var $o;
+      $o = [];
+      $o.push("<html>\n  <head>\n    <title>{Title}</title>\n    <link rel='stylesheet' href='tatkins1.github.io/css/tahjatkinson.css'>\n    <link rel='shortcut icon\" href:\"{favicon}'>\n    <div></div>\n  </head>\n  <body>\n    <header id='header'>\n      <h1>\n        <a href='{BlogURL}'>{Title}</a>\n      </h1>\n      <p>{Description} Read this site via \n        <a href='{RSS}'>RSS</a>\n      </p>\n      <div class='main'>\n        {block:Posts}\n        {block:Text}\n        <article class='text'>\n          <header>\n            <h2>\n              {block:IndexPage}\n              <a href='{Permalink}'>{Title}</a>\n              {/block:IndexPage}\n              {block:PermalinkPage}\n              {Title}\n              {/block:PermalinkPage}\n            </h2>\n          </header>\n          <div class='content'>{Body}</div>\n          <footer>\n            <p>Posted at {12Hour}:{Minutes}{AmPm} {Month} {DayOfMonth}, {Year}</p>\n          </footer>\n        </article>\n        {/block:Text}\n        {block:Photo}\n        <article class='photo'>\n          <figure aria-labelledby='photo{PostID}'>\n            <img src='{PhotoURL-HighRes}' alt='{PhotoAlt}'>\n            <figcaption id='photo{PostID}'>{Caption}</figcaption>\n          </figure>\n        </article>\n        {/block:Photo}\n        {/block:Posts}\n      </div>\n    </header>\n  </body>\n</html>");
+      return $o.join("\n").replace(/\s(?:id|class)=(['"])(\1)/mg, "");
+    }).call(context);
+  };
+
+}).call(this);
