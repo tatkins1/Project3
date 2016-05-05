@@ -1,24 +1,28 @@
-!!! 5
+!!!
 %html
   %head
-    %title {Title}
-    %link{rel: "stylesheet", media: "screen", href: "http://karlstolley.com/assets/css/screen.css"}
-    %link{rel: "shortcut icon" href: "{favicon}"
-    %style {CustomCSS}
-  %body
+    %meta{:charset => "utf-8"}
+      %title {Title}
+      %link{:href => "https://fonts.googleapis.com/css?family=Libre+Baskerville", :rel => "stylesheet", :type => "text/css"}
+        %link{:href => "tatkins1.github.io/css/screen.css", :media => "screen", :rel => "stylesheet", :type => "text/css"}
+          %meta{:content => "width=device-width,initial-scale=1.0,shrink-to-fit=no", :name => "viewport"}/
+          :css
+            {CustomCSS}  %body
     %header#header
       %h1
-        %a{href: "{BlogURL}"} {Title}
-      %p {Description} Read this site via 
-        %a{href: "{RSS}"} RSS
-      .main
-        {block:Posts}
-        {block:Text}
+        %a{:href => "{BlogURL}"} {Title}
+      %img{:alt => "Headshot photo of Tahj Atkinson", :src => "tatkins1.github.io/img/tahj1.png"}/
+    #page
+      %h1 What's New:
+      {block:Posts}
+      
+      {block:Text}
+      .welcome
         %article.text
           %header
-            %h2 
+            %h2
               {block:IndexPage}
-              %a{href: "{Permalink}"} {Title}
+              %a{:href => "{Permalink}"} {Title}
               {/block:IndexPage}
               {block:PermalinkPage}
               {Title}
@@ -26,12 +30,23 @@
           .content {Body}
           %footer
             %p Posted at {12Hour}:{Minutes}{AmPm} {Month} {DayOfMonth}, {Year}
-        {/block:Text}
-        {block:Photo}
-        %article.photo
-          %figure{aria-labelledby: "photo{PostID}"}
-            %img{src: "{PhotoURL-HighRes}", alt: "{PhotoAlt}"}
-            %figcaption{id: "photo{PostID}"} {Caption}
-        {/block:Photo}
-        {/block:Posts}
-     
+      {/block:Text}
+      {block:Quote}
+      %h3 <"{Quote}"
+      %p
+        %span.quote -{Source}
+      {/block:Quote}
+      {block:Photo}
+      %p .
+      %article.photo
+        %figure.clickpic{"aria-labelledby" => "photo{PostID}"}
+          %img{:alt => "{PhotoAlt}", :src => "{PhotoURL-HighRes}"}/
+          %figcaption{:id => "photo{PostID}"} {Caption}
+        %p Posted at {12Hour}:{Minutes}{AmPm} {Month} {DayOfMonth}, {Year}
+      {/block:Photo}
+      
+      
+      {/block:Posts}
+    %p
+      Read this site via
+      %a{:href => "{RSS}"} RSS
